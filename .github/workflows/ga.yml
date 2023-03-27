@@ -24,6 +24,6 @@ jobs:
         pipenv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Rodar Testes Automáticos
       run: |
-        pytest libpythonavatar --cov=libpythonavatar
+        pipenv run pytest libpythonavatar --cov=libpythonavatar
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
