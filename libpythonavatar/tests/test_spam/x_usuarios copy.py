@@ -9,11 +9,13 @@ from libpythonavatar.spam.modelos import Usuario
 def conexao():
     return Conexao()
 
+
 @pytest.fixture
 def sessao(conexao):
     sessao_obj = conexao.gerar_sessao()
     return sessao_obj
-    
+
+
 def test_salvar_usuario(conexao, sessao):
     usuario = Usuario(nome='Renzo')
     sessao.salvar(usuario)
@@ -21,6 +23,7 @@ def test_salvar_usuario(conexao, sessao):
     sessao.roll_back()
     sessao.fechar()
     conexao.fechar()
+
 
 def test_listar_usuarios(conexao, sessao):
     usuarios = [Usuario(nome='Renzo'), Usuario(nome='Carlos')]

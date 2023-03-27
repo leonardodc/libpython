@@ -5,6 +5,7 @@ from libpythonavatar.spam.modelos import Usuario
 
 # ! Antes de usar a classe Mock do Unitest
 
+
 class EnviadorMock(Enviador):
     def __init__(self):
         super().__init__()
@@ -15,11 +16,12 @@ class EnviadorMock(Enviador):
         self.parametros_de_envio = (remetente, destinatario, assunto, corpo)
         self.qtd_de_email_enviados += 1
 
+
 @pytest.mark.parametrize(
     'usuarios',
     [
         [
-            Usuario(nome='Renzo', email='renzo@gmail.com'), 
+            Usuario(nome='Renzo', email='renzo@gmail.com'),
             Usuario(nome='Carlos', email='carlos@gmail.com')
         ],
         [
@@ -27,7 +29,6 @@ class EnviadorMock(Enviador):
         ]
     ]
 )
-
 def test_qtd_de_spam(sessao, usuarios):
     for usuario in usuarios:
         sessao.salvar(usuario)
@@ -39,7 +40,8 @@ def test_qtd_de_spam(sessao, usuarios):
         'Confira os móddulos fantásticos'
     )
     assert len(usuarios) == enviador.qtd_de_email_enviados
-    
+
+
 def test_parametros_de_spam(sessao):
     usuario = Usuario(nome='Renzo', email='renzo@gmail.com')
     sessao.salvar(usuario)
