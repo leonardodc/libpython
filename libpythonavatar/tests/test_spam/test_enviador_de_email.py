@@ -1,9 +1,11 @@
 import pytest
 from libpythonavatar.spam.enviador_de_email import Enviador, EmailInvalido
 
+
 def test_criar_enviador_de_email():
     enviador = Enviador()
     assert enviador is not None
+
 
 @pytest.mark.parametrize(
     'remetente',
@@ -17,7 +19,9 @@ def test_remetente(remetente):
         'Curso Python',
         'Estudos aplicados em 2023'
     )
+
     assert remetente in resultado
+
 
 @pytest.mark.parametrize(
     'remetente',
@@ -32,4 +36,3 @@ def test_remetente_Invalido(remetente):
             'Curso Python',
             'Estudos aplicados em 2023'
         )
-    
